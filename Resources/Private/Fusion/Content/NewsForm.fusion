@@ -1,0 +1,9 @@
+prototype(ISP.News:NewsForm)  < prototype(Neos.Neos:Plugin)
+prototype(ISP.News:NewsForm) {
+    package = 'ISP.News'
+    controller = 'NewsComment'
+    action = 'create'
+    documentnode = ${q(documentNode).property('_name')}
+
+    #documentnode.@process.debug = Neos.Fusion:Debug
+}

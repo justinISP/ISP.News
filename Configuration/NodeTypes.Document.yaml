@@ -1,0 +1,350 @@
+'ISP.News:NewsPage':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    icon: 'icon-file'
+    label: 'News Seite'
+    inspector:
+      groups:
+        general:
+          label: General
+          icon: 'icon-exchange'
+          position: 1100
+        others:
+          label: Weiteres
+          icon: 'icon-exchange'
+          position: 1200          
+  childNodes:
+    #contentSection:
+    #  type: 'ISP.News:NewsPageContentCollection'
+    commentSection:
+      type: 'ISP.News:NewsPageCollection'
+  properties:
+    publishDate:
+      type: DateTime
+      #defaultValue: 'now'
+      ui:
+        label: 'Creation date'
+        inspector:
+          group: 'general'
+          position: 5
+          editorOptions:
+            format: 'd-m-Y H:i'
+            minuteStep: '1'
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
+    archiveDate:
+      type: DateTime
+      ui:
+        label: 'Archive date'
+        inspector:
+          hidden: 'ClientEval:node.properties.publishDate ? false : true'
+          group: 'general'
+          position: 10
+          editorOptions:
+            format: 'd-m-Y H:i'
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
+    previewPicture:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Vorschaubild
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'general'
+          position: 0
+          editorOptions:
+            features:
+              resize: TRUE
+    imageCaption:
+      type: string
+      defaultValue: 'Copyright'
+      ui:
+        label: Bild-Beschreibung
+        reloadIfChanged: true
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Copyright'
+          format:
+            b: true
+            i: true
+            u: false
+            sub: false
+            sup: false
+            p: true
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: true
+          alignment: { }
+
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Enter title here'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: { }
+          list: { }
+          link:
+            a: true
+          alignment: { }
+    teaser:
+      type: string
+      #defaultValue: 'Hier Teaser eingeben...'
+      ui:
+        label: 'Teaser text'
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Enter teaser here'
+          format:
+            b: true
+            i: true
+            u: false
+            sub: false
+            sup: false
+            p: true
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: true
+          alignment: { }
+    author:
+      type: string
+      ui:
+        label: Author
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+    aliasAuthor:
+      type: string
+      ui:
+        label: Alias 
+        reloadIfChanged: true
+        inspector:
+          group: 'others'
+    linkCaption:
+      type: string
+      defaultValue: 'Das könnte Sie interessieren: '
+      ui:
+        label: Überschrift beim Teilen auf Social Media
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+    categories:
+      type: references
+      ui:
+        label: 'Categories'
+        help:
+          message: >
+            Hier soll eine Kategorie ausgewählt werden, unter welcher dieser Artikel später zu finden ist.
+        inspector:
+          group: 'general'
+          editorOptions:
+            nodeTypes: ['ISP.News:Categories']
+    referedNews:
+      type: references
+      ui:
+        label: 'Refered News'
+        inspector:
+          group: 'general'
+          editorOptions:
+            nodeTypes: ['ISP.News:NewsPage']
+'ISP.News:Categories':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    icon: 'icon-file'
+    label: 'Kategorien-Seite'
+    inspector:
+      groups:
+        general:
+          label: General
+          icon: 'icon-exchange'
+          position: 1100
+  childNodes:
+    categorieslist:
+      type: 'ISP.News:CategoryList'
+'ISP.News:CalenderCategories':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    icon: 'icon-file'
+    label: 'Kalender-Kategorien-Seite'
+    inspector:
+      groups:
+        general:
+          label: General
+          icon: 'icon-exchange'
+          position: 1100      
+  properties:
+    leapYear:
+      type: boolean
+      ui:
+        label: 'Schaltjahr'
+        inspector:
+          group: 'general'            
+#  childNodes:
+#    categorieslist:
+#      type: 'ISP.News:CategoryList'
+'ISP.News:EventPage':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    icon: 'icon-file'
+    label: 'Veranstaltungs-Seite'
+    inspector:
+      groups:
+        general:
+          label: General
+          icon: 'icon-exchange'
+          position: 1200
+  childNodes:
+    commentSection:
+      type: 'ISP.News:NewsPageCollection'
+  properties:
+    previewPicture:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Vorschaubild
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'general'
+          position: 0
+          editorOptions:
+            features:
+              resize: TRUE
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Enter title here'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: { }
+          list: { }
+          link:
+            a: true
+          alignment: { }
+    isWholeDay:
+      type: boolean
+      ui:
+        label: 'ganztägig'
+        inspector:
+          group: general
+    eventDate:
+      type: DateTime
+      defaultValue: 'now'
+      ui:
+        label: 'Veranstaltungs-Datum'
+        inspector:
+          group: 'general'
+          position: 5
+          editorOptions:
+            format: 'd-m-Y H:i'
+            minuteStep: '1'
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
+    eventEndDate:
+      type: DateTime
+      defaultValue: ''
+      ui:
+        label: 'Veranstaltungs-Ende'
+        inspector:
+          group: 'general'
+          position: 6
+          editorOptions:
+            format: 'd-m-Y H:i'
+            minuteStep: '1'
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
+    locLink:
+      type: string
+      ui:
+        label: Link zur Kartenansicht
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+    place:
+      type: string
+      defaultValue: 'Hier Ort eingeben...'
+      ui:
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Hier Ort eingeben...'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: { }
+          list: { }
+          link:
+            a: true
+          alignment: { }
+    categories:
+      type: references
+      ui:
+        label: 'Kategorien'
+        inspector:
+          group: 'general'
+          editorOptions:
+            nodeTypes: ['ISP.News:CalenderCategories']
+    author:
+      type: string
+      defaultValue: 'Autor'
+      ui:
+        label: Autor
+        reloadIfChanged: true
+        inspector:
+          group: 'general'

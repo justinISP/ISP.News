@@ -1,0 +1,27 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        'ISP.News': TRUE
+    nodeTypes:
+      groups:
+        news:
+          position: 280
+          label: 'ABG News'
+    modules:
+      'management':
+        submodules:
+          'CommentsModule':
+            label: 'Kommentare'
+            controller: 'ISP\News\Controller\BackendController'
+            description: 'Überprüfen, Bearbeiten, Löschen und Veröffentlichen von Kommentaren'
+            icon: 'icon-comments'
+            additionalResources:
+              javaScripts:
+                - resource://ISP.News/Public/JavaScript/Backend/collapse.js              
+              styleSheets:
+                - resource://ISP.News/Public/Styles/backendStyles.css
+  Flow:
+    mvc:
+      routes:
+        'ISP.News': TRUE

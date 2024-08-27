@@ -1,0 +1,8 @@
+prototype(ISP.News:News)  < prototype(Neos.Neos:Plugin)
+prototype(ISP.News:News) {
+    package = 'ISP.News'
+    controller = 'NewsComment'
+    action = 'index'
+    documentnode = ${q(documentNode).property('_name')}
+    #sorting = ${q(node).property('sorting')}
+}

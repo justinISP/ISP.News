@@ -1,0 +1,43 @@
+tr.border-bottom td {
+  border-top: 1pt solid #3f3f3f;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+#newComments{
+
+  display: block;
+
+}
+
+#oldComments{
+
+  display: none;
+
+}
+
+#colOpen{
+
+  display: none;
+
+}
+
+#colCloseV{
+
+  display: none;
+
+}
+
+.collapsibleClose:after {
+  content: '\2212';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}

@@ -1,0 +1,32 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
+
+<neos:link.node node="{node}">
+    <!-- Creation Date -->
+<!--    <p><f:format.date date="{publishDate}" format="d.m.Y H:i" /></p> -->
+
+    <!-- News Title -->
+    <h4>{title}</h4>
+
+    <!-- preview -->
+    <f:if condition="{previewPicture}">
+        <f:if condition="{neos:rendering.inBackend()}">
+        <f:then>
+          <media:image class="img-fluid" image="{previewPicture}" width="200" height="100" allowUpScaling="TRUE" alt="PreviewBild" />
+        </f:then>
+        <f:else>
+          <a href="{media:uri.image(image: previewPicture, maximumWidth:200, maximumHeight:100, allowCropping:FALSE)}">
+              <media:image class="img-fluid" image="{previewPicture}" width="200" height="100" allowUpScaling="TRUE" alt="PreviewBild" />
+          </a>
+        </f:else>
+        </f:if>
+    </f:if>
+
+    <!-- Teaser -->
+    <h5>{teaser}</h5>
+
+    <!-- Author -->
+    <f:if condition="{author}">
+        <p>{author.properties.title}</p>
+    </f:if>
+</neos:link.node>

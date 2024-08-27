@@ -1,0 +1,29 @@
+privilegeTargets:
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'ISP.News:NewsCommentControllerActions':
+      matcher: 'method(ISP\News\Controller\NewsCommentController->(.*)Action())'
+    'ISP.News:NewsCommentBackendControllerActions':
+      matcher: 'method(ISP\News\Controller\BackendController->(.*)Action())'
+    'ISP.News:CalenderControllerActions':
+      matcher: 'method(ISP\News\Controller\CalenderController->(.*)Action())'
+  Neos\Neos\Security\Authorization\Privilege\ModulePrivilege:
+    'ISP.News:Backend.Module.Management.CommentsModule':
+      label: General access to the comments module
+      matcher: 'management/CommentsModule'
+roles:
+  'Neos.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'ISP.News:CalenderControllerActions'
+        permission: GRANT
+      -
+        privilegeTarget: 'ISP.News:NewsCommentControllerActions'
+        permission: GRANT
+  'Neos.Neos:Administrator':
+    privileges:
+      -
+        privilegeTarget: 'ISP.News:NewsCommentBackendControllerActions'
+        permission: GRANT
+      -
+        privilegeTarget: 'ISP.News:Backend.Module.Management.CommentsModule'
+        permission: GRANT        

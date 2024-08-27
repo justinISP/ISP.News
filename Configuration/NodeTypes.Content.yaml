@@ -1,0 +1,86 @@
+'ISP.News:CategoryList':
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  ui:
+    label: 'Kategorie-Liste'
+    icon: icon-list
+    inlineEditable: true
+    group: 'news'
+'ISP.News:CalenderCategoryList':
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  ui:
+    label: 'Kalender-Kategorie-Liste'
+    icon: icon-list
+    inlineEditable: true
+    group: 'news'
+'ISP.News:NewsList':
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  ui:
+    label: 'News list'
+    icon: icon-list
+    inlineEditable: true
+    group: 'news'
+'ISP.News:News':
+  superTypes:
+    'Neos.Neos:Plugin': TRUE
+  constraints:
+    nodeTypes:
+      '*': false
+  ui:
+    label: Kommentare
+    group: 'general'
+    icon: 'icon-comments'
+    inspector:
+      groups:
+        general:
+          label: 'General'
+          position: 20
+'ISP.News:NewsForm':
+  superTypes:
+    'Neos.Neos:Plugin': TRUE
+  constraints:
+    nodeTypes:
+      '*': false
+  ui:
+    label: Kommentar-Formular
+    group: 'general'
+    icon: 'icon-comments'
+    inspector:
+      groups:
+        general:
+          label: 'General'
+          position: 30
+'ISP.News:NewsPageCollection':
+  superTypes:
+    'Neos.Neos:ContentCollection': TRUE
+  ui:
+    label: 'Content Collection'
+  childNodes:
+    commentform:
+      type: 'ISP.News:NewsForm'
+    commentlist:
+      type: 'ISP.News:News'
+#'ISP.News:NewsPageContentCollection':
+#  superTypes:
+#    'Neos.Neos:ContentCollection': TRUE
+#  ui:
+#    label: 'Content Collection'
+#  childNodes:
+#    preViewPic:
+#      type: 'Neos.NodeTypes:TextWithImage'
+#    headline:
+#      type: 'Neos.NodeTypes:Headline'
+#    teaser:
+#      type: 'Neos.NodeTypes:Text'
+#    content:
+#      type: 'Neos.Neos:ContentCollection'
+'ISP.News:NewsLatestList':
+  superTypes:
+    'Neos.Neos:Content': TRUE
+  ui:
+    label: 'News latest list'
+    icon: icon-list
+    inlineEditable: true
+    group: 'news'

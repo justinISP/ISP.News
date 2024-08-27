@@ -1,0 +1,63 @@
+prototype(ISP.News:NewsPage) < prototype(Neos.Neos:Page) {
+
+  head {
+        stylesheets.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.News/Private/Templates/Page/NewsPage.html'
+            sectionName = 'stylesheets'
+        }
+
+        javascripts.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.News/Private/Templates/Page/NewsPage.html'
+            sectionName = 'headScripts'
+        }      
+
+  }
+
+  body {
+
+      templatePath = 'resource://ISP.News/Private/Templates/Page/NewsPage.html'
+
+      linkCaption = ${q(node).property('linkCaption')}
+      linkUri = Neos.Neos:NodeUri {
+        absolute = true
+        node = ${q(documentNode).property('name')}
+      }
+
+      title = ${q(documentNode).property('title')}
+      publishDate = ${q(node).property('publishDate')}
+
+      teaser = ${q(node).property('teaser')}
+
+      author = ${q(node).property('author')}
+      aliasAuthor = ${q(node).property('aliasAuthor')}
+      categories = ${q(node).property('categories')}
+
+      previewPicture = ${q(node).property('previewPicture')}
+      imageCaption = ${q(node).property('imageCaption')}
+
+      referedNews = ${q(node).property('referedNews')}
+
+      sectionName = 'body'
+      parts {
+          menu = Neos.Neos:Menu
+      }
+
+      content {
+          #main = Neos.Neos:PrimaryContent {
+          #    nodePath = 'main'
+          #}
+          commentSection = Neos.Neos:PrimaryContent {
+              nodePath = 'commentSection'
+          }
+          #contentSection = Neos.Neos:ContentCollection{
+          #    nodePath = 'contentSection'
+          #}
+
+      }
+      javascripts.site = Neos.Fusion:Template {
+          templatePath = 'resource://ISP.News/Private/Templates/Page/NewsPage.html'
+          sectionName = 'bodyScripts'
+      }
+  }
+
+}

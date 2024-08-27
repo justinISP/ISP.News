@@ -1,0 +1,18 @@
+prototype(ISP.News:NewsList) < prototype(Flowpack.Listable:Collection){
+
+#  templatePath = 'resource://ISP.News/Private/Templates/Content/NewsList.html'
+
+#  catProp = ${q(node).property('categories')}
+
+#  collection = Neos.Fusion:Loop{
+#    items = ${q(site).find('[instanceof ISP.News:NewsPage]').filter('[categories*=catProp]').get()}
+#    itemRenderer.@process.tmpl = ${'<li><p>' + q(item).property('title') + '</p><br><p>' + q(item).property('publishDate') + '</p></li>'}
+#  }
+
+@process.tmpl = ${'<ul class="' + this.listClass + '">' + value + '</ul>'}
+
+collection = ${q(site).find('[instanceof ISP.News:EventPage]').slice(0, 5).get()}
+
+itemRenderer.@process.tmpl = ${'<li class="' + itemClass + '">' + value + '</li>'}
+
+}

@@ -1,0 +1,7 @@
+prototype(ISP.News:CalenderCategoryList) < prototype(Flowpack.Listable:Collection){
+
+collection = ${q(site).find('[instanceof ISP.News:EventPage]').filterByReference('categories', documentNode).get()}
+listClass = ${q(documentNode).property('title')}
+itemClass = 'MyList-item'
+
+}

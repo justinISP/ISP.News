@@ -1,0 +1,12 @@
+prototype(ISP.News:EventPage.Short) < prototype(Neos.Neos:Content) {
+    // set the template path and section to use
+    templatePath = 'resource://ISP.News/Private/Templates/Content/EventPageShort.html'
+
+    # We have to manually set all needed node properties as Fluid template variables
+    eventDate = ${q(node).property('eventDate')}
+    eventEndDate = ${q(node).property('eventEndDate')}
+    title = ${q(node).property('title')}
+    place = ${q(node).property('place')}
+    previewPicture = ${q(node).property('previewPicture')}
+    isWholeDay = ${q(node).property('isWholeDay')}
+}

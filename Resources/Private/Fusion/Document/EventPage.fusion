@@ -1,0 +1,69 @@
+prototype(ISP.News:EventPage) < prototype(Neos.Neos:Page) {
+
+  head {
+        stylesheets.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.News/Private/Templates/Page/EventPage.html'
+            sectionName = 'stylesheets'
+        }
+
+        javascripts.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.News/Private/Templates/Page/EventPage.html'
+            sectionName = 'headScripts'
+        }
+
+        descTag = Neos.Fusion:Tag {
+            tagName = 'description'
+            content = ${q(node).property('teaser')}
+        }
+
+        titleTag = Neos.Fusion:Tag {
+            tagName = 'title'
+            content = ${q(node).property('title') + ' - ABG-Net.de'}
+        }        
+
+  }
+
+  body {
+
+      templatePath = 'resource://ISP.News/Private/Templates/Page/EventPage.html'
+
+      title = Neos.Neos:Editable {
+          property = 'title'
+          @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+      }
+
+      linkUri = Neos.Neos:NodeUri {
+        absolute = true
+        node = ${q(documentNode).property('name')}
+      }
+
+      locLink = ${q(node).property('locLink')}
+      isWholeDay = ${q(node).property('isWholeDay')}
+      previewPicture = ${q(node).property('previewPicture')}
+      eventEndDate = ${q(node).property('eventEndDate')}
+      eventDate = ${q(documentNode).property('eventDate')}
+      categories = ${q(node).property('categories')}
+      place = Neos.Neos:Editable {
+          property = 'place'
+          @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+      }
+
+      sectionName = 'body'
+      parts {
+          menu = Neos.Neos:Menu
+      }
+
+      content {
+
+          commentSection = Neos.Neos:PrimaryContent {
+              nodePath = 'commentSection'
+          }
+
+      }
+      javascripts.site = Neos.Fusion:Template {
+          templatePath = 'resource://ISP.News/Private/Templates/Page/EventPage.html'
+          sectionName = 'bodyScripts'
+      }
+  }
+
+}

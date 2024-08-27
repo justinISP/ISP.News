@@ -1,0 +1,25 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<div class="neos-content neos-container-fluid">
+
+    Verifizierte Kommentare
+
+    <table style="width: 100%;" id="oldComments">
+    <f:for each="{commentsVerified}" as="comment">
+    <f:if condition="{comment.deleted} == 1">
+      <tr class="border-bottom">
+        <td style="padding: 5px; width: 65%;">
+            <p style="color: #00b5ff;">{comment.name -> f:format.raw()}</p>
+            <p style="color: #00b5ff;">{comment.email -> f:format.raw()}</p>
+            <p>{comment.comment -> f:format.raw()}</p>
+        </td>
+        <f:if condition="{comment.docNode.0}">
+          <td align="right">
+            <neos:link.node class="neos-button neos-button-primary" target="_blank" node="{comment.docNode.0}"><i class="fas fa-share icon-white"></i></neos:link.node>
+          </td>
+        </f:if>
+      </tr>
+    </f:if>
+    </f:for>
+  </table>
+</div>

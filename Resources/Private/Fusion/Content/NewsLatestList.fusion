@@ -1,0 +1,7 @@
+prototype(ISP.News:NewsLatestList) < prototype(Flowpack.Listable:Collection){
+
+collection = ${q(site).find('[instanceof ISP.News:NewsPage]').slice(0, 5).get()}
+listClass = 'MyList'
+itemClass = 'MyList-item'
+
+}

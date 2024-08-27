@@ -1,0 +1,31 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace fusion=Neos\Fusion\ViewHelpers}
+{namespace f=Neos\FluidAdaptor\ViewHelpers}
+
+<f:form action="created" objectName="newComment" name="CommentForm">
+  <div class="col-md-4">
+      <div class="form-group cm-name">
+          <label for="name">Name<span class="required">*</span></label>
+          <f:form.textfield required="true" id="name" property="name" class="form-control" errorClass="is-invalid" value="" placeholder="Name" />
+      </div>
+      <div class="form-group cm-mail">
+          <label for="email">E-Mail<span class="required">*</span></label>
+          <f:form.textfield required="true" id="email" property="email" class="form-control" errorClass="is-invalid" value="" placeholder="E-Mail" />
+      </div>
+  </div>
+  <div class="col-md-8">
+      <div class="form-group cm-comment">
+          <label for="comment">Kommentar<span class="required">*</span></label>
+          <f:form.textarea required="true" id="comment" property="comment" class="form-control comment-textarea" errorClass="is-invalid" value="" placeholder="Kommentar" />
+      </div>
+      <div style="text-align: center; position: relative; width: 80px;">
+        <img src="{f:uri.resource(path: 'Captcha/bg3.jpg', package: 'ISP.News')}" alt="CAPTCHA" width="100px">
+        <img style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" src="https://www.abg-net.de<f:uri.action action="createCaptcha" controller="NewsComment" package="ISP.News" arguments="{capString}"></f:uri.action>" alt="CAPTCHA" width="100px">
+      </div>
+      <f:form.textfield required="true" id="cap" name="cap" class="form-control" errorClass="is-invalid" value="" placeholder="Bitte hier die Zeichenkette eintragen." />
+  </div>
+
+
+  <f:form.hidden property="node" value="{documentNode}"/>
+  <button type="submit" class="neos-button neos-button-primary absenden">Absenden</button>
+</f:form>

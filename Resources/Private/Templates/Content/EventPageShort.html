@@ -1,0 +1,16 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
+
+<neos:link.node node="{node}">
+    <!-- Creation Date -->
+<!--    <p><f:format.date date="{publishDate}" format="d.m.Y H:i" /></p> -->
+
+    <!-- Event Title -->
+    <h4>{title}</h4>
+
+    <!-- Place -->
+    <h5>{place}</h5>
+
+    <!-- Date -->
+        <p>{eventDate -> f:format.date()}</p>
+</neos:link.node>

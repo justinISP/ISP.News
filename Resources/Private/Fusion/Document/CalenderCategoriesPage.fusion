@@ -1,0 +1,47 @@
+prototype(ISP.News:CalenderCategories) < prototype(Neos.Neos:Page) {
+
+  head {
+        stylesheets.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.News/Private/Templates/Page/NewsPage.html'
+            sectionName = 'stylesheets'
+        }
+
+        javascripts.site = Neos.Fusion:Template {
+            templatePath = 'resource://ISP.News/Private/Templates/Page/NewsPage.html'
+            sectionName = 'headScripts'
+        }
+
+        descTag = Neos.Fusion:Tag {
+            tagName = 'description'
+            content = ${q(node).property('teaser')}
+        }
+
+        titleTag = Neos.Fusion:Tag {
+            tagName = 'title'
+            content = ${q(node).property('title') + ' - ABG-Net.de'}
+        }        
+
+  }
+
+  body {
+
+      templatePath = 'resource://ISP.News/Private/Templates/Page/CalenderCategoriesPage.html'
+
+      sectionName = 'body'
+      parts {
+          menu = Neos.Neos:Menu
+      }
+
+      content {
+          main = Neos.Neos:PrimaryContent {
+              nodePath = 'main'
+          }
+
+      }
+      javascripts.site = Neos.Fusion:Template {
+          templatePath = 'resource://ISP.News/Private/Templates/Page/NewsPage.html'
+          sectionName = 'bodyScripts'
+      }
+  }
+
+}

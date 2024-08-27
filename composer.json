@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "isp/news",
+    "require": {
+        "neos/flow": "*",
+        "flowpack/listable": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ISP\\News\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "ISP.News"
+        }
+    }
+}

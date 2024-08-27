@@ -1,0 +1,16 @@
+prototype(ISP.News:CategoryList) < prototype(Flowpack.Listable:Collection){
+
+collection = ${q(site).find('[instanceof ISP.News:NewsPage]').filterByReference('categories', documentNode).filterByDate('archiveDate', Date.today(), '>').sort('publishDate', 'DESC').get()}
+listClass = ${q(documentNode).property('title')}
+itemClass = 'MyList-item'
+
+@cache {
+        mode = 'uncached'
+        context {
+                1 = 'node'
+                2 = 'site'
+                3 = 'documentNode'
+        }
+}
+
+}

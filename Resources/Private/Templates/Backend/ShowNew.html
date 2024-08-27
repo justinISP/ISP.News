@@ -1,0 +1,44 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<div class="neos-content neos-container-fluid">
+
+    Kommentare zur Überprüfung
+    
+    <table style="width: 100%;" id="newComments">
+    <f:for each="{comments}" as="comment">
+      <tr class="border-bottom">
+        <td style="padding: 5px; width: 65%;">
+            <p style="color: #00b5ff;">{comment.name -> f:format.raw()}</p>
+            <p style="color: #00b5ff;">{comment.email -> f:format.raw()}</p>
+            <p>{comment.comment -> f:format.raw()}</p>
+        </td>
+        <f:if condition="{comment.docNode.0}">
+          <td align="right">
+            <neos:link.node class="neos-button neos-button-primary" target="_blank" node="{comment.docNode.0}"><i class="fas fa-share icon-white"></i></neos:link.node>
+          </td>
+        </f:if>
+        <td align="right">
+          <f:form action="verify" arguments="{comment: comment.objComment}" style="display:inline-block; float:none;">
+            <button type="submit" class="neos-button neos-button-success"><i class="fas fa-eye icon-white"></i></button>
+          </f:form>
+        </td>
+        <td align="right">
+          <f:form action="delete" arguments="{comment: comment.objComment}" style="display:inline-block; float:none;">
+            <button type="submit" class="neos-button neos-button-danger"><i class="fas fa-trash-alt"></i></button>
+          </f:form>
+        </td>
+        <td align="right">
+          <span class="toggleDetails">
+            <button type="button" onclick="hideFunction()" name="editBTN" value="edit"><i class="far fa-edit"></i></button>
+          </span>
+          <div class="details hidden" style="float: right;">
+            <f:form action="update" arguments="{comment: comment.objComment}" style="display:inline-block; float:none;">
+              <f:form.textfield name="updateField" value="{comment.comment}" />
+              <button type="submit" class="neos-button neos-button-primary"><i class="far fa-save"></i></button>
+            </f:form>
+          </div>
+        </td>
+      </tr>
+    </f:for>
+    </table>
+
+</div>

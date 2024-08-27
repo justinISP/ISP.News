@@ -1,0 +1,11 @@
+{namespace fusion=Neos\Fusion\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<f:for each="{comments}" as="comment">
+  <f:if condition="{comment.deleted}==1">
+    <div class="cm-comments">
+      <div class="cm-a-name">{comment.name}, {comment.created -> f:format.date(localeFormatType: 'date', forceLocale: 'de_DE')}</div>
+      <div class="cm-a-comment">{comment.comment -> f:format.nl2br()}</div>
+    </div>
+  </f:if>
+</f:for>
